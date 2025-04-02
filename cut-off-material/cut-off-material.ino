@@ -33,9 +33,9 @@ void resetDisplay() {
   lcd.setCursor(0, 0);
   lcd.print("  Cut Off Material  ");
   lcd.setCursor(0, 1);
-  lcd.print("Set Plan Cut off:   ");
+  lcd.print("Set Plan Cutoff:    ");
   lcd.setCursor(0, 2);
-  lcd.print("Acl Plan        :   ");
+  lcd.print("Acl Plan       :    ");
   lcd.setCursor(0, 3);
   lcd.print("A=reset   B=start   ");
 }
@@ -84,9 +84,9 @@ void loop() {
       else if ((char)e.bit.KEY == '#') {
       }
       else {
-        if (editMode && inputPlanKey.length() < 2) {
+        if (editMode && inputPlanKey.length() < 3) {
           inputPlanKey += keyChar;
-          lcd.setCursor(17, 1);
+          lcd.setCursor(16, 1);
           lcd.print(inputPlanKey);
         }
       }
@@ -100,12 +100,12 @@ void loop() {
   if (millis() - lastUpdateTime > updateInterval) {
     lastUpdateTime = millis();
 
-    // Update the count on the LCD (row 2, column 17)
-    lcd.setCursor(17, 2);
+    // Update the count on the LCD (row 2, column 16)
+    lcd.setCursor(16, 2);
     lcd.print(count);
 
     // Show a cursor indicator if in edit mode
-    lcd.setCursor(17 + inputPlanKey.length(), 1);
+    lcd.setCursor(16 + inputPlanKey.length(), 1);
     lcd.print(editMode ? "_" : " ");
 
     // Convert the input string to an integer plan value
